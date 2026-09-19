@@ -9,6 +9,7 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { projectStore } from './project-store.js';
 import { analyzePerformance } from './analyzer.js';
+import { arrangeFromPerformance } from './auto-arranger.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.join(__dirname, '..', 'public');
@@ -141,6 +142,52 @@ app.get('/api/prompt', (req, res) => {
     } catch {}
   }
   res.json({ latestPrompt: latestUserPrompt });
+});
+
+app.post('/api/arrange', (req, res) => {
+  const { prompt } = req.body || {};
+  const promptStr = (typeof prompt === 'string' && prompt.trim()) ? prompt.trim() : (latestUserPrompt?.prompt || 'Orchestral arrangement');
+
+  // Save prompt
+  latestUserPrompt = {
+    prompt: promptStr,
+    timestamp: Date.now(),
+    iso: new Date().toISOString()
+  };
+  fs.writeFileSync(path.join(sessionDir, 'latest_prompt.json'), JSON.stringify(latestUserPrompt, null, 2));
+  broadcast('NEW_PROMPT', latestUserPrompt);
+
+  // Get performance
+  let perfData = null;
+  const perfFile = path.join(sessionDir, 'performance.json');
+  const demoFile = path.join(sessionDir, 'demo_performance.json');
+  if (fs.existsSync(perfFile)) {
+    perfData = JSON.parse(fs.readFileSync(perfFile, 'utf8'));
+  } else if (fs.existsSync(demoFile)) {
+    perfData = JSON.parse(fs.readFileSync(demoFile, 'utf8'));
+  }
+
+  if (!perfData) {
+    return res.status(400).json({ error: 'No performance recorded to arrange. Play some notes first!' });
+  }
+
+  // Generate arrangement
+  const { tracks, reason, detectedKey } = arrangeFromPerformance(perfData, promptStr);
+  projectStore.setArrangementTracks(tracks, reason);
+  const updatedProject = projectStore.getProject();
+
+  // Broadcast update and auto-play
+  broadcast('PROJECT_UPDATED', { project: updatedProject });
+  broadcast('PLAY', { fromBar: 1, loop: true });
+
+  console.log(`[Studio Arranger] Transformed into ${tracks.length} tracks (${detectedKey}) for prompt: "${promptStr}"`);
+  res.json({
+    status: 'ok',
+    reason,
+    detectedKey,
+    tracksCount: tracks.length,
+    project: updatedProject
+  });
 });
 
 app.get('/api/performance', (req, res) => {
