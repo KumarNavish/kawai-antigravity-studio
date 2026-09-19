@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kawai CA-701 — Antigravity Music Studio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="studio-app">
+    <!-- Top Header & Transport -->
+    <header class="studio-header">
+      <div class="header-left">
+        <div class="brand">
+          <span class="brand-kawai">KAWAI</span>
+          <span class="brand-model">CA-701</span>
+          <span class="brand-separator">/</span>
+          <span class="brand-antigravity">ANTIGRAVITY</span>
+        </div>
+        <div class="connection-status" id="kawai-status-badge">
+          <span class="status-dot" id="midi-dot"></span>
+          <span class="status-label" id="midi-label">Kawai CA-701: Searching...</span>
+          <button class="btn-subtle" id="btn-request-midi" title="Initialize Web MIDI">Connect MIDI</button>
+        </div>
+
+        <!-- Rendering Mode Selector -->
+        <div class="mode-selector-box">
+          <span class="mode-label">MODE:</span>
+          <select id="rendering-mode-select" class="select-mode" title="Choose Rendering Mode">
+            <option value="piano_quality">Piano Quality (SK-EX + Browser Audio)</option>
+            <option value="kawai_multitimbral">Kawai Multi-Timbral (GM2 Hardware Module)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Center Transport -->
+      <div class="transport-cluster">
+        <button class="btn-transport btn-record" id="btn-record" title="Record Kawai Performance (R)">
+          <span class="record-icon"></span>
+          <span class="btn-text">REC</span>
+        </button>
+        <button class="btn-transport btn-play" id="btn-play" title="Play / Pause (Spacebar)">
+          <svg class="play-icon" viewBox="0 0 24 24" width="18" height="18">
+            <polygon points="6,4 20,12 6,20" fill="currentColor"/>
+          </svg>
+        </button>
+        <button class="btn-transport btn-stop" id="btn-stop" title="Stop">
+          <svg viewBox="0 0 24 24" width="14" height="14">
+            <rect x="5" y="5" width="14" height="14" fill="currentColor" rx="2"/>
+          </svg>
+        </button>
+        <button class="btn-transport btn-loop" id="btn-loop" title="Toggle Loop">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 2l4 4-4 4M21 6H7a4 4 0 0 0-4 4v2M7 22l-4-4 4-4M3 18h14a4 4 0 0 0 4-4v-2"/>
+          </svg>
+        </button>
+
+        <div class="transport-display">
+          <div class="counter" id="bar-counter">01 . 1</div>
+          <div class="tempo-tag" id="tempo-display">92 BPM</div>
+        </div>
+      </div>
+
+      <!-- Right Header Status & Volume -->
+      <div class="header-right">
+        <div class="antigravity-indicator" id="agy-status">
+          <span class="agy-dot"></span>
+          <span class="agy-text">MCP Connected</span>
+        </div>
+
+        <div class="master-volume-control">
+          <span class="vol-label">VOL</span>
+          <input type="range" id="master-volume" min="0" max="1" step="0.01" value="0.85" title="Master Volume">
+        </div>
+
+        <button class="btn-subtle btn-panic" id="btn-panic" title="Emergency MIDI Panic: Reset all 16 channels">PANIC</button>
+        <button class="btn-subtle" id="btn-load-demo" title="Load demo 16-bar Kawai performance">Demo 16-Bars</button>
+      </div>
+    </header>
+
+    <!-- Interactive Prompt Bar -->
+    <div class="prompt-bar-container">
+      <div class="prompt-bar-info">
+        <span class="prompt-badge">ANTIGRAVITY PROMPT</span>
+        <span class="prompt-hint">Write what you want the music to become:</span>
+      </div>
+      <div class="prompt-bar-input-wrap">
+        <input type="text" id="prompt-input" class="prompt-input" placeholder="Type prompt here (e.g. 'Add a dark cinematic upright bass and cello groove') or write in Antigravity Chat..." />
+        <button id="btn-submit-prompt" class="btn-prompt">Send Prompt</button>
+      </div>
+      <div class="prompt-status-tag" id="prompt-status-tag">Write in chat or above</div>
+    </div>
+
+    <!-- Live Piano Monitor Bar -->
+    <div class="live-input-bar">
+      <div class="live-input-left">
+        <span class="live-pill" id="live-indicator">LIVE PIANO</span>
+        <span class="live-note-display" id="live-note-display">Waiting for notes... Play your Kawai keys or click Test Note</span>
+      </div>
+      <div class="live-input-actions">
+        <button class="btn-subtle" id="btn-test-piano" title="Send a test note (C4) to verify Web Audio & Visualizer">Test Note (C4)</button>
+        <button class="btn-subtle btn-guide" id="btn-open-setup" title="Kawai CA-701 Connection Guide">Setup Guide</button>
+      </div>
+    </div>
+
+    <!-- Main Workspace Timeline -->
+    <main class="timeline-container">
+      <!-- Section Markers Ruler -->
+      <div class="timeline-ruler" id="timeline-ruler">
+        <div class="ruler-sidebar">SECTIONS</div>
+        <div class="ruler-bars" id="ruler-sections-track">
+          <!-- Dynamic section markers injected via JS -->
+        </div>
+      </div>
+
+      <!-- Tracks Container -->
+      <div class="tracks-viewport" id="tracks-viewport">
+        <div class="playhead" id="playhead"></div>
+        <div class="tracks-list" id="tracks-list">
+          <!-- Track Lanes dynamically injected -->
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Status Bar -->
+    <footer class="studio-footer">
+      <div class="footer-status" id="footer-status-text">
+        Ready · Play your Kawai CA-701 or instruct Antigravity in chat
+      </div>
+      <div class="footer-meta">
+        <span id="detected-key-badge" class="meta-badge">Key: Detecting...</span>
+        <span id="total-bars-badge" class="meta-badge">16 Bars</span>
+        <span id="jitter-badge" class="meta-badge" title="Measured USB-MIDI arrival jitter">Jitter: ~1.2ms</span>
+        <span class="meta-shortcut-hint"><kbd>Space</kbd> Play/Pause &nbsp; <kbd>R</kbd> Record &nbsp; <kbd>Esc</kbd> Panic</span>
+      </div>
+    </footer>
+
+    <!-- Setup Guide Modal -->
+    <div class="modal-overlay" id="modal-setup-guide" style="display: none;">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Connecting Your Kawai CA-701 to Mac</h3>
+          <button class="btn-close-modal" id="btn-close-setup">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="setup-section">
+            <h4>Method 1: USB-to-Host Cable (Recommended)</h4>
+            <p>1. Connect a standard <strong>USB-B to USB-C</strong> (or USB-A) cable from the <strong>USB to Host</strong> port on the CA-701 directly into your Mac.</p>
+            <p>2. Ensure the Kawai CA-701 power is turned <strong>ON</strong>.</p>
+            <p>3. Click <strong>"Connect MIDI"</strong> on the top bar (or refresh the page). It will connect automatically.</p>
+          </div>
+          <div class="setup-section">
+            <h4>Method 2: Bluetooth MIDI</h4>
+            <p>1. On Kawai CA-701 touchscreen: Go to <strong>Menu → Bluetooth → Bluetooth MIDI = ON</strong>.</p>
+            <p>2. On your Mac: Open <strong>Audio MIDI Setup</strong> (<kbd>Cmd</kbd>+<kbd>Space</kbd> → type "Audio MIDI Setup").</p>
+            <p>3. In the menu bar: Select <strong>Window → Show MIDI Studio</strong>.</p>
+            <p>4. Double-click the <strong>Bluetooth</strong> icon in the toolbar, find <strong>CA701</strong>, and click <strong>Connect</strong>.</p>
+            <p>5. Return to this browser window and click <strong>"Connect MIDI"</strong>.</p>
+          </div>
+          <div class="setup-section">
+            <h4>Method 3: Browser Permissions (Chrome / Brave)</h4>
+            <p>Click the <strong>tune icon / lock icon</strong> next to <code>localhost:4321</code> in your browser address bar and verify that <strong>MIDI devices</strong> is set to <strong>Allow</strong>.</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-subtle" id="btn-reconnect-midi-modal">Scan & Connect Now</button>
+          <button class="btn-primary" id="btn-dismiss-modal">Got it</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
