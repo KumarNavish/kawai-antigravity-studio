@@ -1,7 +1,7 @@
 // public/arranger-browser.js
 // Client-side Arrangement Engine for Standalone / GitHub Pages Deployments
 
-(function(window) {
+(function(root) {
   function pitchClass(midi) {
     return ((midi % 12) + 12) % 12;
   }
@@ -207,5 +207,5 @@
     };
   }
 
-  window.arrangeClientSide = arrangeLocally;
-})(window);
+  root.arrangeClientSide = arrangeLocally;
+})(typeof window !== 'undefined' ? window : globalThis);

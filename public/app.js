@@ -5,6 +5,7 @@
 import { audioEngine } from './audio.js';
 import { KawaiMidiManager } from './midi.js';
 import { StudioVisualizer } from './visualizer.js';
+import { DEFAULT_PROJECT } from './default-project.js';
 
 class StudioApp {
   constructor() {
@@ -68,22 +69,22 @@ class StudioApp {
     this.setupVisualizer();
     this.setupMidi();
     this.setupEvents();
-    this.setupWebSocket();
 
-    // If running statically (e.g. GitHub Pages) and no WebSocket state arrives, load default project
-    setTimeout(async () => {
-      if (!this.project) {
-        try {
-          const res = await fetch('default-project.json');
-          if (res.ok) {
-            const proj = await res.json();
-            if (!this.project) this.onProjectLoaded(proj);
-          }
-        } catch (e) {
-          console.log('Static project fallback:', e);
-        }
+    // Immediately load the default project so all tracks and notes render with zero delay!
+    this.onProjectLoaded(DEFAULT_PROJECT);
+
+    // Only attempt WebSocket connection if running on localhost with server
+    const isLocal = (location.hostname === 'localhost' || location.hostname === '127.0.0.1');
+    if (isLocal) {
+      this.setupWebSocket();
+    } else {
+      console.log('[Studio App] Running in Standalone Browser Mode on', location.hostname);
+      const agyIndicator = document.getElementById('agy-status');
+      if (agyIndicator) {
+        agyIndicator.innerHTML = '<span class="agy-dot" style="background: #3dd68c; box-shadow: 0 0 8px #3dd68c;"></span><span class="agy-text">Web Standalone</span>';
       }
-    }, 600);
+      this.dom.promptStatusTag.textContent = 'Type what you want to hear & click Send Prompt';
+    }
 
     console.log('[Studio App] Ready with auto-take capture and live input monitoring.');
   }
@@ -297,13 +298,9 @@ class StudioApp {
       this.dom.footerStatus.textContent = `Rendering Mode: ${mode === 'piano_quality' ? 'Piano Quality (SK-EX + Browser Audio)' : 'Kawai Multi-Timbral (GM2 Module)'}`;
     });
 
-    this.dom.btnLoadDemo.addEventListener('click', async () => {
-      const res = await fetch('/api/performance');
-      if (res.ok) {
-        const data = await res.json();
-        this.dom.footerStatus.textContent = 'Loaded 16-Bar Kawai Performance Demo';
-        this.refreshAnalysis();
-      }
+    this.dom.btnLoadDemo.addEventListener('click', () => {
+      this.onProjectLoaded(DEFAULT_PROJECT);
+      this.dom.footerStatus.textContent = 'Loaded 16-Bar Kawai Performance Demo';
     });
 
     this.dom.masterVolume.addEventListener('input', (e) => {
@@ -342,6 +339,16 @@ class StudioApp {
     try {
       // Resume audio context on user gesture
       audioEngine.resume();
+
+      const isLocal = (location.hostname === 'localhost' || location.hostname === '127.0.0.1');
+      if (!isLocal && window.arrangeClientSide && this.project) {
+        const result = window.arrangeClientSide(this.project, text);
+        this.onProjectLoaded(result.project);
+        this.dom.promptStatusTag.textContent = `✓ Transformed: ${result.tracksCount} tracks! Playing now...`;
+        this.dom.footerStatus.textContent = result.reason;
+        this.play(1, true);
+        return;
+      }
 
       const res = await fetch('/api/arrange', {
         method: 'POST',
