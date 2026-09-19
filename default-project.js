@@ -3148,3 +3148,4 @@ export const DEFAULT_PROJECT = {
   ],
   "renderingMode": "piano_quality"
 };
+if (typeof window !== 'undefined') window.DEFAULT_PROJECT = DEFAULT_PROJECT;
