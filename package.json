@@ -1,0 +1,21 @@
+{
+  "name": "kawaii-piano",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "cli": "node studio-cli.mjs",
+    "demo": "node server/generate-demo.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "express": "^5.2.1",
+    "ws": "^8.21.3",
+    "zod": "^4.6.5"
+  }
+}

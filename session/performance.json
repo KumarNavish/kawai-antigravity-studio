@@ -1,0 +1,79 @@
+{
+  "title": "Kawai CA-701 Performance (18:52:12)",
+  "bpm": 92,
+  "timeSignature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "totalBars": 16,
+  "notes": [
+    {
+      "pitch": 62,
+      "velocity": 90,
+      "releaseVelocity": 64,
+      "channel": 0,
+      "rawTimeMs": 0,
+      "rawDurationMs": 702.6,
+      "startTick": 0,
+      "durationTicks": 517,
+      "inferredBar": 1,
+      "inferredBeat": 1
+    },
+    {
+      "pitch": 65,
+      "velocity": 85,
+      "releaseVelocity": 64,
+      "channel": 0,
+      "rawTimeMs": 61.9,
+      "rawDurationMs": 701.3,
+      "startTick": 46,
+      "durationTicks": 516,
+      "inferredBar": 1,
+      "inferredBeat": 1
+    },
+    {
+      "pitch": 69,
+      "velocity": 88,
+      "releaseVelocity": 64,
+      "channel": 0,
+      "rawTimeMs": 123,
+      "rawDurationMs": 701.2,
+      "startTick": 91,
+      "durationTicks": 516,
+      "inferredBar": 1,
+      "inferredBeat": 1
+    },
+    {
+      "pitch": 72,
+      "velocity": 82,
+      "releaseVelocity": 64,
+      "channel": 0,
+      "rawTimeMs": 182.5,
+      "rawDurationMs": 700.8,
+      "startTick": 134,
+      "durationTicks": 516,
+      "inferredBar": 1,
+      "inferredBeat": 1
+    },
+    {
+      "pitch": 76,
+      "velocity": 80,
+      "releaseVelocity": 64,
+      "channel": 0,
+      "rawTimeMs": 242.7,
+      "rawDurationMs": 801.2,
+      "startTick": 179,
+      "durationTicks": 590,
+      "inferredBar": 1,
+      "inferredBeat": 1
+    }
+  ],
+  "pedals": [],
+  "timingJitterStats": {
+    "sampleCount": 0,
+    "meanIntervalMs": 0,
+    "jitterStandardDeviationMs": 0,
+    "maxJitterMs": 0
+  }
+}

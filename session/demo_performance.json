@@ -1,0 +1,832 @@
+{
+  "id": "perf-kawai-demo-16bars",
+  "title": "Kawai CA-701 16-Bar Performance (D Minor - Yearning to Uplift)",
+  "recordedAt": "2026-09-19T16:23:49.682Z",
+  "bpm": 92,
+  "timeSignature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "totalBars": 16,
+  "notes": [
+    {
+      "pitch": 52,
+      "startTick": 1,
+      "durationTicks": 440,
+      "velocity": 62
+    },
+    {
+      "pitch": 38,
+      "startTick": 2,
+      "durationTicks": 1440,
+      "velocity": 51
+    },
+    {
+      "pitch": 45,
+      "startTick": 239,
+      "durationTicks": 1200,
+      "velocity": 48
+    },
+    {
+      "pitch": 53,
+      "startTick": 480,
+      "durationTicks": 960,
+      "velocity": 49
+    },
+    {
+      "pitch": 53,
+      "startTick": 481,
+      "durationTicks": 440,
+      "velocity": 62
+    },
+    {
+      "pitch": 57,
+      "startTick": 959,
+      "durationTicks": 440,
+      "velocity": 60
+    },
+    {
+      "pitch": 52,
+      "startTick": 1439,
+      "durationTicks": 440,
+      "velocity": 60
+    },
+    {
+      "pitch": 34,
+      "startTick": 1919,
+      "durationTicks": 1440,
+      "velocity": 51
+    },
+    {
+      "pitch": 50,
+      "startTick": 1919,
+      "durationTicks": 440,
+      "velocity": 63
+    },
+    {
+      "pitch": 41,
+      "startTick": 2157,
+      "durationTicks": 1200,
+      "velocity": 49
+    },
+    {
+      "pitch": 53,
+      "startTick": 2399,
+      "durationTicks": 440,
+      "velocity": 63
+    },
+    {
+      "pitch": 50,
+      "startTick": 2400,
+      "durationTicks": 960,
+      "velocity": 52
+    },
+    {
+      "pitch": 57,
+      "startTick": 2882,
+      "durationTicks": 440,
+      "velocity": 66
+    },
+    {
+      "pitch": 60,
+      "startTick": 3357,
+      "durationTicks": 440,
+      "velocity": 61
+    },
+    {
+      "pitch": 31,
+      "startTick": 3839,
+      "durationTicks": 1440,
+      "velocity": 53
+    },
+    {
+      "pitch": 57,
+      "startTick": 3841,
+      "durationTicks": 440,
+      "velocity": 67
+    },
+    {
+      "pitch": 38,
+      "startTick": 4079,
+      "durationTicks": 1200,
+      "velocity": 53
+    },
+    {
+      "pitch": 46,
+      "startTick": 4320,
+      "durationTicks": 960,
+      "velocity": 54
+    },
+    {
+      "pitch": 58,
+      "startTick": 4320,
+      "durationTicks": 440,
+      "velocity": 66
+    },
+    {
+      "pitch": 62,
+      "startTick": 4797,
+      "durationTicks": 440,
+      "velocity": 63
+    },
+    {
+      "pitch": 60,
+      "startTick": 5281,
+      "durationTicks": 440,
+      "velocity": 67
+    },
+    {
+      "pitch": 33,
+      "startTick": 5760,
+      "durationTicks": 1440,
+      "velocity": 50
+    },
+    {
+      "pitch": 62,
+      "startTick": 5762,
+      "durationTicks": 720,
+      "velocity": 64
+    },
+    {
+      "pitch": 40,
+      "startTick": 5998,
+      "durationTicks": 1200,
+      "velocity": 48
+    },
+    {
+      "pitch": 45,
+      "startTick": 6239,
+      "durationTicks": 960,
+      "velocity": 49
+    },
+    {
+      "pitch": 61,
+      "startTick": 6480,
+      "durationTicks": 720,
+      "velocity": 62
+    },
+    {
+      "pitch": 57,
+      "startTick": 7197,
+      "durationTicks": 480,
+      "velocity": 59
+    },
+    {
+      "pitch": 38,
+      "startTick": 7679,
+      "durationTicks": 1440,
+      "velocity": 58
+    },
+    {
+      "pitch": 52,
+      "startTick": 7682,
+      "durationTicks": 360,
+      "velocity": 73
+    },
+    {
+      "pitch": 45,
+      "startTick": 7917,
+      "durationTicks": 1200,
+      "velocity": 56
+    },
+    {
+      "pitch": 53,
+      "startTick": 8039,
+      "durationTicks": 360,
+      "velocity": 70
+    },
+    {
+      "pitch": 53,
+      "startTick": 8158,
+      "durationTicks": 960,
+      "velocity": 57
+    },
+    {
+      "pitch": 57,
+      "startTick": 8397,
+      "durationTicks": 600,
+      "velocity": 68
+    },
+    {
+      "pitch": 60,
+      "startTick": 9121,
+      "durationTicks": 480,
+      "velocity": 72
+    },
+    {
+      "pitch": 36,
+      "startTick": 9598,
+      "durationTicks": 1440,
+      "velocity": 60
+    },
+    {
+      "pitch": 60,
+      "startTick": 9601,
+      "durationTicks": 480,
+      "velocity": 75
+    },
+    {
+      "pitch": 43,
+      "startTick": 9837,
+      "durationTicks": 1200,
+      "velocity": 59
+    },
+    {
+      "pitch": 52,
+      "startTick": 10080,
+      "durationTicks": 960,
+      "velocity": 62
+    },
+    {
+      "pitch": 64,
+      "startTick": 10082,
+      "durationTicks": 480,
+      "velocity": 76
+    },
+    {
+      "pitch": 65,
+      "startTick": 10558,
+      "durationTicks": 960,
+      "velocity": 72
+    },
+    {
+      "pitch": 31,
+      "startTick": 11517,
+      "durationTicks": 1440,
+      "velocity": 63
+    },
+    {
+      "pitch": 65,
+      "startTick": 11520,
+      "durationTicks": 480,
+      "velocity": 78
+    },
+    {
+      "pitch": 38,
+      "startTick": 11762,
+      "durationTicks": 1200,
+      "velocity": 68
+    },
+    {
+      "pitch": 45,
+      "startTick": 11997,
+      "durationTicks": 960,
+      "velocity": 63
+    },
+    {
+      "pitch": 64,
+      "startTick": 11999,
+      "durationTicks": 480,
+      "velocity": 77
+    },
+    {
+      "pitch": 62,
+      "startTick": 12478,
+      "durationTicks": 480,
+      "velocity": 76
+    },
+    {
+      "pitch": 60,
+      "startTick": 12959,
+      "durationTicks": 480,
+      "velocity": 77
+    },
+    {
+      "pitch": 60,
+      "startTick": 13438,
+      "durationTicks": 960,
+      "velocity": 66
+    },
+    {
+      "pitch": 29,
+      "startTick": 13442,
+      "durationTicks": 1440,
+      "velocity": 58
+    },
+    {
+      "pitch": 36,
+      "startTick": 13682,
+      "durationTicks": 1200,
+      "velocity": 58
+    },
+    {
+      "pitch": 45,
+      "startTick": 13920,
+      "durationTicks": 960,
+      "velocity": 56
+    },
+    {
+      "pitch": 53,
+      "startTick": 14161,
+      "durationTicks": 720,
+      "velocity": 57
+    },
+    {
+      "pitch": 57,
+      "startTick": 14397,
+      "durationTicks": 960,
+      "velocity": 65
+    },
+    {
+      "pitch": 40,
+      "startTick": 15360,
+      "durationTicks": 1440,
+      "velocity": 68
+    },
+    {
+      "pitch": 55,
+      "startTick": 15361,
+      "durationTicks": 480,
+      "velocity": 81
+    },
+    {
+      "pitch": 46,
+      "startTick": 15601,
+      "durationTicks": 1200,
+      "velocity": 69
+    },
+    {
+      "pitch": 52,
+      "startTick": 15837,
+      "durationTicks": 960,
+      "velocity": 65
+    },
+    {
+      "pitch": 58,
+      "startTick": 15839,
+      "durationTicks": 480,
+      "velocity": 79
+    },
+    {
+      "pitch": 64,
+      "startTick": 16317,
+      "durationTicks": 480,
+      "velocity": 77
+    },
+    {
+      "pitch": 67,
+      "startTick": 16798,
+      "durationTicks": 480,
+      "velocity": 78
+    },
+    {
+      "pitch": 65,
+      "startTick": 17278,
+      "durationTicks": 480,
+      "velocity": 82
+    },
+    {
+      "pitch": 33,
+      "startTick": 17279,
+      "durationTicks": 1440,
+      "velocity": 71
+    },
+    {
+      "pitch": 45,
+      "startTick": 17517,
+      "durationTicks": 1200,
+      "velocity": 69
+    },
+    {
+      "pitch": 64,
+      "startTick": 17757,
+      "durationTicks": 480,
+      "velocity": 81
+    },
+    {
+      "pitch": 53,
+      "startTick": 17762,
+      "durationTicks": 960,
+      "velocity": 74
+    },
+    {
+      "pitch": 61,
+      "startTick": 18238,
+      "durationTicks": 960,
+      "velocity": 82
+    },
+    {
+      "pitch": 38,
+      "startTick": 19198,
+      "durationTicks": 1440,
+      "velocity": 77
+    },
+    {
+      "pitch": 69,
+      "startTick": 19198,
+      "durationTicks": 480,
+      "velocity": 89
+    },
+    {
+      "pitch": 45,
+      "startTick": 19440,
+      "durationTicks": 1200,
+      "velocity": 79
+    },
+    {
+      "pitch": 50,
+      "startTick": 19677,
+      "durationTicks": 960,
+      "velocity": 76
+    },
+    {
+      "pitch": 67,
+      "startTick": 19679,
+      "durationTicks": 480,
+      "velocity": 90
+    },
+    {
+      "pitch": 65,
+      "startTick": 20160,
+      "durationTicks": 480,
+      "velocity": 91
+    },
+    {
+      "pitch": 64,
+      "startTick": 20642,
+      "durationTicks": 480,
+      "velocity": 93
+    },
+    {
+      "pitch": 62,
+      "startTick": 21117,
+      "durationTicks": 720,
+      "velocity": 85
+    },
+    {
+      "pitch": 34,
+      "startTick": 21120,
+      "durationTicks": 1440,
+      "velocity": 76
+    },
+    {
+      "pitch": 43,
+      "startTick": 21359,
+      "durationTicks": 1200,
+      "velocity": 75
+    },
+    {
+      "pitch": 50,
+      "startTick": 21599,
+      "durationTicks": 960,
+      "velocity": 75
+    },
+    {
+      "pitch": 65,
+      "startTick": 21841,
+      "durationTicks": 600,
+      "velocity": 89
+    },
+    {
+      "pitch": 68,
+      "startTick": 22558,
+      "durationTicks": 480,
+      "velocity": 86
+    },
+    {
+      "pitch": 33,
+      "startTick": 23041,
+      "durationTicks": 1440,
+      "velocity": 75
+    },
+    {
+      "pitch": 65,
+      "startTick": 23041,
+      "durationTicks": 480,
+      "velocity": 87
+    },
+    {
+      "pitch": 45,
+      "startTick": 23278,
+      "durationTicks": 1200,
+      "velocity": 72
+    },
+    {
+      "pitch": 53,
+      "startTick": 23517,
+      "durationTicks": 960,
+      "velocity": 71
+    },
+    {
+      "pitch": 69,
+      "startTick": 23517,
+      "durationTicks": 480,
+      "velocity": 83
+    },
+    {
+      "pitch": 72,
+      "startTick": 23998,
+      "durationTicks": 960,
+      "velocity": 84
+    },
+    {
+      "pitch": 70,
+      "startTick": 24958,
+      "durationTicks": 480,
+      "velocity": 80
+    },
+    {
+      "pitch": 36,
+      "startTick": 24961,
+      "durationTicks": 1440,
+      "velocity": 71
+    },
+    {
+      "pitch": 43,
+      "startTick": 25200,
+      "durationTicks": 1200,
+      "velocity": 70
+    },
+    {
+      "pitch": 48,
+      "startTick": 25439,
+      "durationTicks": 960,
+      "velocity": 69
+    },
+    {
+      "pitch": 67,
+      "startTick": 25440,
+      "durationTicks": 480,
+      "velocity": 82
+    },
+    {
+      "pitch": 65,
+      "startTick": 25921,
+      "durationTicks": 960,
+      "velocity": 83
+    },
+    {
+      "pitch": 38,
+      "startTick": 26879,
+      "durationTicks": 1440,
+      "velocity": 58
+    },
+    {
+      "pitch": 62,
+      "startTick": 26881,
+      "durationTicks": 480,
+      "velocity": 72
+    },
+    {
+      "pitch": 45,
+      "startTick": 27120,
+      "durationTicks": 1200,
+      "velocity": 59
+    },
+    {
+      "pitch": 53,
+      "startTick": 27357,
+      "durationTicks": 960,
+      "velocity": 56
+    },
+    {
+      "pitch": 60,
+      "startTick": 27359,
+      "durationTicks": 480,
+      "velocity": 70
+    },
+    {
+      "pitch": 57,
+      "startTick": 27841,
+      "durationTicks": 960,
+      "velocity": 72
+    },
+    {
+      "pitch": 62,
+      "startTick": 28797,
+      "durationTicks": 1920,
+      "velocity": 58
+    },
+    {
+      "pitch": 57,
+      "startTick": 28798,
+      "durationTicks": 1920,
+      "velocity": 59
+    },
+    {
+      "pitch": 26,
+      "startTick": 28801,
+      "durationTicks": 1440,
+      "velocity": 50
+    },
+    {
+      "pitch": 54,
+      "startTick": 28801,
+      "durationTicks": 1920,
+      "velocity": 62
+    },
+    {
+      "pitch": 38,
+      "startTick": 29038,
+      "durationTicks": 1200,
+      "velocity": 47
+    },
+    {
+      "pitch": 45,
+      "startTick": 29280,
+      "durationTicks": 960,
+      "velocity": 49
+    },
+    {
+      "pitch": 50,
+      "startTick": 29519,
+      "durationTicks": 720,
+      "velocity": 48
+    }
+  ],
+  "pedals": [
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 127,
+      "tick": 30
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 0,
+      "tick": 1870
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 127,
+      "tick": 1950
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 0,
+      "tick": 3790
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 127,
+      "tick": 3870
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 0,
+      "tick": 5710
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 127,
+      "tick": 5790
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 0,
+      "tick": 7630
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 127,
+      "tick": 7710
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 0,
+      "tick": 9550
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 127,
+      "tick": 9630
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 0,
+      "tick": 11470
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 127,
+      "tick": 11550
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 0,
+      "tick": 13390
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 127,
+      "tick": 13470
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 0,
+      "tick": 15310
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 127,
+      "tick": 15390
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 0,
+      "tick": 17230
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 127,
+      "tick": 17310
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 0,
+      "tick": 19150
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 127,
+      "tick": 19230
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 0,
+      "tick": 21070
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 127,
+      "tick": 21150
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 0,
+      "tick": 22990
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 127,
+      "tick": 23070
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 0,
+      "tick": 24910
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 127,
+      "tick": 24990
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 0,
+      "tick": 26830
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 127,
+      "tick": 26910
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 0,
+      "tick": 28750
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 127,
+      "tick": 28830
+    },
+    {
+      "type": "damper",
+      "cc": 64,
+      "value": 0,
+      "tick": 30670
+    }
+  ]
+}
