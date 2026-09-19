@@ -320,20 +320,36 @@ class StudioApp {
     const text = (this.dom.promptInput.value || '').trim();
     if (!text) return;
 
-    this.dom.promptStatusTag.textContent = 'Sending prompt to Antigravity...';
+    this.dom.promptStatusTag.textContent = `✨ Transforming music: "${text}"...`;
+    this.dom.footerStatus.textContent = `Arranging: "${text}"...`;
+    
     try {
-      const res = await fetch('/api/prompt', {
+      // Resume audio context on user gesture
+      audioEngine.resume();
+
+      const res = await fetch('/api/arrange', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: text })
       });
-      if (res.ok) {
-        this.dom.promptStatusTag.textContent = '✓ Prompt queued! Switch to chat to confirm.';
-        this.dom.footerStatus.textContent = `Prompt: "${text}"`;
+      const data = await res.json();
+      if (res.ok && data.status === 'ok') {
+        this.dom.promptStatusTag.textContent = `✓ Transformed: ${data.tracksCount} tracks (${data.detectedKey})! Playing now...`;
+        this.dom.footerStatus.textContent = data.reason || `Transformed for: "${text}"`;
+        this.onProjectLoaded(data.project);
+        this.play(1, true);
+      } else {
+        // Fallback: send prompt to queue for Antigravity
+        await fetch('/api/prompt', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: text })
+        });
+        this.dom.promptStatusTag.textContent = data.error || '✓ Prompt queued for Antigravity!';
       }
     } catch (err) {
-      console.error('Prompt error:', err);
-      this.dom.promptStatusTag.textContent = 'Error sending prompt.';
+      console.error('Arrange error:', err);
+      this.dom.promptStatusTag.textContent = 'Error during transformation.';
     }
   }
 
