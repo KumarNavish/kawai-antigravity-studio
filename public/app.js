@@ -65,10 +65,26 @@ class StudioApp {
   }
 
   async init() {
-    this.setupWebSocket();
     this.setupVisualizer();
     this.setupMidi();
     this.setupEvents();
+    this.setupWebSocket();
+
+    // If running statically (e.g. GitHub Pages) and no WebSocket state arrives, load default project
+    setTimeout(async () => {
+      if (!this.project) {
+        try {
+          const res = await fetch('default-project.json');
+          if (res.ok) {
+            const proj = await res.json();
+            if (!this.project) this.onProjectLoaded(proj);
+          }
+        } catch (e) {
+          console.log('Static project fallback:', e);
+        }
+      }
+    }, 600);
+
     console.log('[Studio App] Ready with auto-take capture and live input monitoring.');
   }
 
@@ -339,17 +355,28 @@ class StudioApp {
         this.onProjectLoaded(data.project);
         this.play(1, true);
       } else {
-        // Fallback: send prompt to queue for Antigravity
-        await fetch('/api/prompt', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ prompt: text })
-        });
-        this.dom.promptStatusTag.textContent = data.error || '✓ Prompt queued for Antigravity!';
+        // Try client-side arranger if backend couldn't arrange
+        if (window.arrangeClientSide && this.project) {
+          const result = window.arrangeClientSide(this.project, text);
+          this.onProjectLoaded(result.project);
+          this.dom.promptStatusTag.textContent = `✓ Transformed (Client Engine): ${result.tracksCount} tracks! Playing now...`;
+          this.dom.footerStatus.textContent = result.reason;
+          this.play(1, true);
+        } else {
+          this.dom.promptStatusTag.textContent = data.error || '✓ Prompt queued!';
+        }
       }
     } catch (err) {
-      console.error('Arrange error:', err);
-      this.dom.promptStatusTag.textContent = 'Error during transformation.';
+      console.warn('Backend arrange unreachable, running in-browser client engine...', err);
+      if (window.arrangeClientSide && this.project) {
+        const result = window.arrangeClientSide(this.project, text);
+        this.onProjectLoaded(result.project);
+        this.dom.promptStatusTag.textContent = `✓ Transformed (In-Browser Engine): ${result.tracksCount} tracks! Playing now...`;
+        this.dom.footerStatus.textContent = result.reason;
+        this.play(1, true);
+      } else {
+        this.dom.promptStatusTag.textContent = 'Error during transformation.';
+      }
     }
   }
 
